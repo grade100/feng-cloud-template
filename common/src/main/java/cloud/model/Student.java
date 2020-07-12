@@ -1,5 +1,6 @@
 package cloud.model;
 
+import cloud.result.CommonResult;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -19,4 +20,5 @@ public class Student implements Serializable {
      * 名字
      */
     private String name;
+
 }
