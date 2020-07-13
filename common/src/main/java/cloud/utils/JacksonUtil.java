@@ -19,7 +19,6 @@ import java.text.SimpleDateFormat;
  * @author: feng
  * @create: 2020-07-13 04:11
  **/
-@Slf4j
 public class JacksonUtil {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
@@ -41,16 +40,11 @@ public class JacksonUtil {
      * @param obj 对象
      * @return Json格式字符串
      */
-    public static <T> String obj2String(T obj) {
+    public static <T> String obj2String(T obj) throws JsonProcessingException {
         if (obj == null) {
             return null;
         }
-        try {
-            return obj instanceof String ? (String) obj : objectMapper.writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            log.error("Parse Object to String error : {}", e.getMessage());
-            return null;
-        }
+        return obj instanceof String ? (String) obj : objectMapper.writeValueAsString(obj);
     }
 
     /**
@@ -58,16 +52,11 @@ public class JacksonUtil {
      * @param obj 对象
      * @return 美化的Json格式字符串
      */
-    public static <T> String obj2StringPretty(T obj) {
+    public static <T> String obj2StringPretty(T obj) throws JsonProcessingException {
         if (obj == null) {
             return null;
         }
-        try {
-            return obj instanceof String ? (String) obj : objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            log.error("Parse Object to String error : {}", e.getMessage());
-            return null;
-        }
+        return obj instanceof String ? (String) obj : objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
     }
 
     /**
@@ -76,36 +65,22 @@ public class JacksonUtil {
      * @param clazz 自定义对象的class对象
      * @return 自定义对象
      */
-    public static <T> T string2Obj(String str, Class<T> clazz){
+    public static <T> T string2Obj(String str, Class<T> clazz) throws JsonProcessingException {
         if(StringUtils.isEmpty(str) || clazz == null){
             return null;
         }
-        try {
-            return clazz.equals(String.class) ? (T) str : objectMapper.readValue(str, clazz);
-        } catch (Exception e) {
-            log.error("Parse String to Object error : {}", e.getMessage());
-            return null;
-        }
+        return clazz.equals(String.class) ? (T) str : objectMapper.readValue(str, clazz);
+
     }
-    public static <T> T string2Obj(String str, TypeReference<T> typeReference) {
+    public static <T> T string2Obj(String str, TypeReference<T> typeReference) throws JsonProcessingException {
         if (StringUtils.isEmpty(str) || typeReference == null) {
             return null;
         }
-        try {
-            return (T) (typeReference.getType().equals(String.class) ? str : objectMapper.readValue(str, typeReference));
-        } catch (IOException e) {
-            log.error("Parse String to Object error", e);
-            return null;
-        }
+        return (T) (typeReference.getType().equals(String.class) ? str : objectMapper.readValue(str, typeReference));
     }
 
-    public static <T> T string2Obj(String str, Class<?> collectionClazz, Class<?>... elementClazzes) {
+    public static <T> T string2Obj(String str, Class<?> collectionClazz, Class<?>... elementClazzes) throws JsonProcessingException {
         JavaType javaType = objectMapper.getTypeFactory().constructParametricType(collectionClazz, elementClazzes);
-        try {
-            return objectMapper.readValue(str, javaType);
-        } catch (IOException e) {
-            log.error("Parse String to Object error : {}" + e.getMessage());
-            return null;
-        }
+        return objectMapper.readValue(str, javaType);
     }
 }
