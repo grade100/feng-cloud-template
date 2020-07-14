@@ -1,6 +1,5 @@
 package cloud.exception;
 
-import com.sun.istack.internal.Nullable;
 /**
  * @description: 通用定制异常统一继承类
  * @author: feng
@@ -12,11 +11,11 @@ public class GeneralException extends RuntimeException {
         super(msg);
     }
 
-    public GeneralException(@Nullable String msg, @Nullable Throwable cause) {
+    public GeneralException( String msg,  Throwable cause) {
         super(msg, cause);
     }
 
-    public GeneralException(@Nullable Throwable cause) {
+    public GeneralException( Throwable cause) {
         super(cause);
     }
 }
