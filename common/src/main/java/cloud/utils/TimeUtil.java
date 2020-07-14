@@ -45,10 +45,10 @@ public class TimeUtil {
      */
     public static Date getDayBegin(){
         Calendar cal=Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 0);//0点
-        cal.set(Calendar.MINUTE, 0);//0分
-        cal.set(Calendar.SECOND, 0);//0秒
-        cal.set(Calendar.MILLISECOND, 0);//0毫秒
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
     }
 
@@ -67,49 +67,25 @@ public class TimeUtil {
 
 
     /**
-     * 获取昨天开始时间
+     * 获取当前某天开始时间
      * @return
      */
-    public static Date getBeginDayOfYesterday(){
+    public static Date getBeginDayOfnum(int num){
         Calendar cal=Calendar.getInstance();
         cal.setTime(getDayBegin());//当天开始时间
-        cal.add(Calendar.DAY_OF_MONTH, -1);//当天月份天数减1
+        cal.add(Calendar.DAY_OF_MONTH, num);
         return cal.getTime();
     }
 
 
     /**
-     * 获取昨天结束时间
+     * 获取当前某天结束时间
      * @return
      */
-    public static Date getEndDayOfYesterday(){
+    public static Date getEndDayOfNum(int num){
         Calendar cal=Calendar.getInstance();
-        cal.setTime(getDayEnd());//当天结束时间
-        cal.add(Calendar.DAY_OF_MONTH, -1);//当天月份天数减1
-        return cal.getTime();
-    }
-
-
-    /**
-     * 获取明天开始时间
-     * @return
-     */
-    public static Date getBeginDayOfTomorrow(){
-        Calendar cal=Calendar.getInstance();
-        cal.setTime(getDayBegin());//当天开始时间
-        cal.add(Calendar.DAY_OF_MONTH, 1);//当天月份天数加1
-        return cal.getTime();
-    }
-
-
-    /**
-     * 获取明天结束时间
-     * @return
-     */
-    public static Date getEndDayOfTomorrow(){
-        Calendar cal=Calendar.getInstance();
-        cal.setTime(getDayEnd());//当天结束时间
-        cal.add(Calendar.DAY_OF_MONTH, 1);//当天月份天数加1
+        cal.setTime(getDayEnd());
+        cal.add(Calendar.DAY_OF_MONTH, num);
         return cal.getTime();
     }
 
