@@ -1,6 +1,5 @@
 package cloud.model;
 
-import cloud.result.CommonResult;
 import lombok.Data;
 
 import java.io.Serializable;

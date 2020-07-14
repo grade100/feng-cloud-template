@@ -39,6 +39,8 @@ public class TimeUtil {
     public static final String DATE_FOMATE_YYYY_MM_DDHHMM_START = "yyyy-MM-dd 00:00";
 
     public static final String DATE_FOMATE_YYYY_MM_DDHHMM_END = "yyyy-MM-dd 23:59";
+
+    public static final String DATE_FOMATE_yyyyMMddHHmmssS = "yyyyMMddHHmmssS";
     /**
      * 获取当天开始时间
      * @return

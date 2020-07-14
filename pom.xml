@@ -11,6 +11,9 @@
     <modules>
         <module>common</module>
         <module>config</module>
+        <module>cache-server</module>
+        <module>operate-server</module>
+        <module>query-server</module>
     </modules>
     <dependencies>
         <dependency>
