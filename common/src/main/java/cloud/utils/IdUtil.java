@@ -22,26 +22,16 @@ import static cloud.utils.TimeUtil.DATE_FOMATE_yyyyMMddHHmmssS;
 @Slf4j
 public class IdUtil {
 
-    private static int seq = 0;
-
-    private static final int MAX = 99999;
-
     /**
      * 时间格式生成序列
      * @return String
      */
     public static synchronized String generateSequenceNo() {
         try {
-
             Date date = new Date();
             String dateStr = TimeUtil.dateFormat(date,DATE_FOMATE_yyyyMMddHHmmssS);
-            String idStr = dateStr+seq;
-
-            if (seq == MAX) {
-                seq = 0;
-            } else {
-                seq++;
-            }
+            int i = (int) ((Math.random() * 9 + 1) * 100000);
+            String idStr = dateStr+i;
             return idStr;
         }catch (Exception e){
             log.info("id 生成异常",e);
