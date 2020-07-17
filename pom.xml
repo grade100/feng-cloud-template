@@ -16,6 +16,7 @@
         <module>query-server</module>
         <module>elasticsearch-server</module>
         <module>mq-server</module>
+        <module>oss-server</module>
     </modules>
     <dependencies>
         <dependency>
