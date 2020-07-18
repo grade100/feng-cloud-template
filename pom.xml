@@ -19,6 +19,7 @@
         <module>oss-server</module>
         <module>eureka</module>
         <module>spring-boot-admin</module>
+        <module>middle-platform</module>
     </modules>
 
     <parent>
@@ -40,6 +41,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

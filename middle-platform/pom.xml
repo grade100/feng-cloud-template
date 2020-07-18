@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>query-server</artifactId>
+    <artifactId>middle-platform</artifactId>
 
     <dependencies>
         <!--spring web 内嵌jetty容器 相关依赖-->

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: operate-server
+server:
+  port: 8085
+eureka:
+  service-url:
+    defaultZone: http://localhost:8001/eureka/

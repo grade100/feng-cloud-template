@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: oss-server
+server:
+  port: 8086
+eureka:
+  service-url:
+    defaultZone: http://localhost:8001/eureka/
