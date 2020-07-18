@@ -27,6 +27,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
+
+        <!--springBoot admin client-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.2.3</version>
+        </dependency>
     </dependencies>
 
 </project>
