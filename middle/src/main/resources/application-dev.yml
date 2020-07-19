@@ -1,13 +1,8 @@
 spring:
   application:
-    name: spring-boot-admin
+    name: middle
 server:
-  port: 8088
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  port: 8089
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
@@ -16,3 +11,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

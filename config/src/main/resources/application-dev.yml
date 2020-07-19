@@ -9,5 +9,10 @@ management:
       exposure:
         include: "*"
 eureka:
-  service-url:
-    defaultZone: http://localhost:8001/eureka/
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    ip-address: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/

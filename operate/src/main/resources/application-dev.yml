@@ -1,8 +1,8 @@
 spring:
   application:
-    name: spring-boot-admin
+    name: operate
 server:
-  port: 8088
+  port: 8085
 management:
   endpoints:
     web:

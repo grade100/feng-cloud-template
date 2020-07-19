@@ -1,8 +1,8 @@
 spring:
   application:
-    name: spring-boot-admin
+    name: elasticsearch
 server:
-  port: 8088
+  port: 8083
 management:
   endpoints:
     web:

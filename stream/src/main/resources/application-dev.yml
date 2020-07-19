@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: stream
+  boot:
+    admin:
+      client:
+        url: http://localhost:8088
+server:
+  port: 8084
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+eureka:
+  service-url:
+    defaultZone: http://localhost:8001/eureka/

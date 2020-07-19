@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: elasticsearch
+server:
+  port: 8083
+eureka:
+  service-url:
+    defaultZone: http://localhost:8001/eureka/
