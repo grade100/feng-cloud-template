@@ -1,16 +1,7 @@
 package cloud.utils;
-import cloud.exception.GeneralException;
+
 import lombok.extern.slf4j.Slf4j;
-
-import java.text.DecimalFormat;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import static cloud.utils.TimeUtil.DATE_FOMATE_yyyyMMddHHmmssS;
 
 /**
@@ -27,15 +18,10 @@ public class IdUtil {
      * @return String
      */
     public static synchronized String generateSequenceNo() {
-        try {
-            Date date = new Date();
-            String dateStr = TimeUtil.dateFormat(date,DATE_FOMATE_yyyyMMddHHmmssS);
-            int i = (int) ((Math.random() * 9 + 1) * 100000);
-            String idStr = dateStr+i;
-            return idStr;
-        }catch (Exception e){
-            log.info("id 生成异常",e);
-        }
-        return null;
+        Date date = new Date();
+        String dateStr = TimeUtil.dateFormat(date,DATE_FOMATE_yyyyMMddHHmmssS);
+        int i = (int) ((Math.random() * 9 + 1) * 100000);
+        String idStr = dateStr+i;
+        return idStr;
     }
 }
