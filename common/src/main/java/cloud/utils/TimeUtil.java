@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,25 +47,20 @@ public class TimeUtil {
      * @return
      */
     public static Date getDayBegin(){
-        Calendar cal=Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return cal.getTime();
+        LocalDateTime now = LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
+        return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
     }
 
-
+    public static void main(String[] args) {
+        System.out.printf(getDayStartTime(new Date()).toString());
+    }
     /**
      * 获取当天结束时间
      * @return
      */
     public static Date getDayEnd(){
-        Calendar cal=Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 23);//23点
-        cal.set(Calendar.MINUTE, 59);//59分
-        cal.set(Calendar.SECOND, 59);//59秒
-        return cal.getTime();
+        LocalDateTime now = LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
+        return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
@@ -73,10 +69,9 @@ public class TimeUtil {
      * @return
      */
     public static Date getBeginDayOfnum(int num){
-        Calendar cal=Calendar.getInstance();
-        cal.setTime(getDayBegin());//当天开始时间
-        cal.add(Calendar.DAY_OF_MONTH, num);
-        return cal.getTime();
+        LocalDateTime localDateTime = LocalDate.now().plusDays(num).atStartOfDay();
+        LocalDateTime now = localDateTime.of(localDateTime.toLocalDate(), LocalTime.MIN);
+        return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
@@ -85,46 +80,37 @@ public class TimeUtil {
      * @return
      */
     public static Date getEndDayOfNum(int num){
-        Calendar cal=Calendar.getInstance();
-        cal.setTime(getDayEnd());
-        cal.add(Calendar.DAY_OF_MONTH, num);
-        return cal.getTime();
+        LocalDateTime localDateTime = LocalDate.now().plusDays(num).atStartOfDay();
+        LocalDateTime now = localDateTime.of(localDateTime.toLocalDate(), LocalTime.MAX);
+        return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
     /**
      * 获取某个日期的开始时间
-     * @param d
+     * @param date
      * @return
      */
-    public static Timestamp getDayStartTime(Date d) {
-        Calendar calendar=Calendar.getInstance();
-        if(null!=d){
-            calendar.setTime(d);
-        }
-        calendar.set(calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        return new Timestamp(calendar.getTimeInMillis());
+    public static Date getDayStartTime(Date date) {
+        LocalDateTime localDateTime = date.toInstant()
+                .atZone( ZoneId.systemDefault() )
+                .toLocalDateTime();
+        LocalDateTime now = localDateTime.of(localDateTime.toLocalDate(), LocalTime.MIN);
+        return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
     /**
      * 获取某个日期的结束时间
-     * @param d
+     * @param date
      * @return
      */
-    public static Timestamp getDayEndTime(Date d) {
-        Calendar calendar=Calendar.getInstance();
-        if(null!=d){
-            calendar.setTime(d);
-        }
-        calendar.set(calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH), 23, 59, 59);
-        calendar.set(Calendar.MILLISECOND, 999);
-        return new Timestamp(calendar.getTimeInMillis());
+    public static Date getDayEndTime(Date date) {
+        LocalDateTime localDateTime = date.toInstant()
+                .atZone( ZoneId.systemDefault() )
+                .toLocalDateTime();
+        LocalDateTime now = localDateTime.of(localDateTime.toLocalDate(), LocalTime.MAX);
+        return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
